@@ -34,7 +34,7 @@ Path | HTTP Method | Description
 /livros/id   | DELETE | Remove livro
 /livros/id   | GET    | Detalha livro
 /usuarios    | GET    | Lista usuários
-/usuarios    | POST   | Cadastrar usuário
+/usuarios    | POST   | Cadastra usuário
 /relatorios  | GET    | Exibe relatório
 
 ### Tecnologias

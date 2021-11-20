@@ -1,4 +1,4 @@
-name: Executar testes automatizados
+name: Deploy automático
 
 on:
   push:

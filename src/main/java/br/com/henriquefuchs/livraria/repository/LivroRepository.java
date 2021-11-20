@@ -13,7 +13,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     "l.autor.nome, " +
     "count(*), " +
     "count(*) * 0.1 / (select count(*) from Livro l1) * 0.1)" +
-    "from Livro l group by l.autor")
+    "from Livro l group by l.autor.nome")
   List<RelatorioLivroPorAutorDto> relatorioLivroPorAutor();
 
 }

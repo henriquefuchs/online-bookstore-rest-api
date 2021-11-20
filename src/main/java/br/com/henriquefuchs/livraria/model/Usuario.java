@@ -36,6 +36,9 @@ public class Usuario implements UserDetails {
   @Column(name = "SENHA")
   private String senha;
 
+  @Column(name = "EMAIL")
+  private String email;
+
   @ManyToMany
   @JoinTable(name = "PERFIS_USUARIOS", joinColumns = @JoinColumn(name = "USUARIO_ID"), inverseJoinColumns = @JoinColumn(name = "PERFIL_ID"))
   private List<Perfil> perfis = new ArrayList<>();

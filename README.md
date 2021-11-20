@@ -18,6 +18,7 @@
 - [x] Cadastrar usuário
 - [x] Relatório de quantidade de livros publicados por autor
 - [x] Autenticação e autorização
+- [x] Envio de e-mail após cadastro de usuário
 
 ### Endpoints
 
@@ -57,4 +58,9 @@ As seguintes ferramentas foram usadas no desenvolvimento do projeto:
 - [SpringFox Swagger UI](https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui)
 - [Spring Boot Starter Test](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test)
 - [Spring Boot Starter Security](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security)
+- [Spring Boot Starter Mail](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt)
 - [JSON Web Token Support For The JVM](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt)
+- [Docker](https://docs.docker.com/get-started/)
+- [Docker Compose](https://docs.docker.com/get-started/08_using_compose/)
+- [Heroku](https://www.heroku.com/)
+- [GitHub Actions](https://github.com/features/actions)

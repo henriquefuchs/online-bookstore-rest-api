@@ -1,9 +1,9 @@
 package br.com.henriquefuchs.livraria.controller;
 
-import br.com.henriquefuchs.livraria.dto.AtualizacaoAutorFormDto;
+import br.com.henriquefuchs.livraria.dto.AtualizacaoAutorInputDto;
 import br.com.henriquefuchs.livraria.dto.AutorDetalhadoDto;
 import br.com.henriquefuchs.livraria.dto.AutorDto;
-import br.com.henriquefuchs.livraria.dto.AutorFormDto;
+import br.com.henriquefuchs.livraria.dto.AutorInputDto;
 import br.com.henriquefuchs.livraria.service.AutorService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +36,16 @@ public class AutorController {
 
   @PostMapping
   @ApiOperation("Cadastrar autor")
-  public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorFormDto autorFormDto, UriComponentsBuilder uriComponentsBuilder) {
-    AutorDto autorDtor = autorService.cadastrar(autorFormDto);
+  public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorInputDto autorInputDto, UriComponentsBuilder uriComponentsBuilder) {
+    AutorDto autorDtor = autorService.cadastrar(autorInputDto);
     URI uri = uriComponentsBuilder.path("/autores/{id}").buildAndExpand(autorDtor.getId()).toUri();
     return ResponseEntity.created(uri).body(autorDtor);
   }
 
   @PutMapping
   @ApiOperation("Atualizar autor")
-  public ResponseEntity<AutorDto> atualizar(@RequestBody @Valid AtualizacaoAutorFormDto atualizacaoAutorFormDto) {
-    AutorDto autorDto = autorService.atualizar(atualizacaoAutorFormDto);
+  public ResponseEntity<AutorDto> atualizar(@RequestBody @Valid AtualizacaoAutorInputDto atualizacaoAutorInputDto) {
+    AutorDto autorDto = autorService.atualizar(atualizacaoAutorInputDto);
     return ResponseEntity.ok(autorDto);
   }
 

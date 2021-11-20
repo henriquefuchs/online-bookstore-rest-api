@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-public class LoginFormDto {
+public class LoginInputDto {
 
   @NotBlank
   public String login;

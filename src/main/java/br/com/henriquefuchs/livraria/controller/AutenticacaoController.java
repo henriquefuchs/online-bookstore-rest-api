@@ -1,6 +1,6 @@
 package br.com.henriquefuchs.livraria.controller;
 
-import br.com.henriquefuchs.livraria.dto.LoginFormDto;
+import br.com.henriquefuchs.livraria.dto.LoginInputDto;
 import br.com.henriquefuchs.livraria.dto.TokenDto;
 import br.com.henriquefuchs.livraria.infra.security.AutenticacaoService;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +23,7 @@ public class AutenticacaoController {
 
   @PostMapping
   @ApiOperation("Autenticar")
-  public TokenDto autenticar(@RequestBody @Valid LoginFormDto dto) {
+  public TokenDto autenticar(@RequestBody @Valid LoginInputDto dto) {
     return autenticacaoService.autenticar(dto);
   }
 

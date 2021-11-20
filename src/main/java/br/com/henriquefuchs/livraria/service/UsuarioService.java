@@ -1,7 +1,7 @@
 package br.com.henriquefuchs.livraria.service;
 
 import br.com.henriquefuchs.livraria.dto.UsuarioDto;
-import br.com.henriquefuchs.livraria.dto.UsuarioFormDto;
+import br.com.henriquefuchs.livraria.dto.UsuarioInputDto;
 import br.com.henriquefuchs.livraria.model.Perfil;
 import br.com.henriquefuchs.livraria.model.Usuario;
 import br.com.henriquefuchs.livraria.repository.PerfilRepository;
@@ -36,7 +36,7 @@ public class UsuarioService {
   }
 
   @Transactional
-  public UsuarioDto cadastrar(UsuarioFormDto dto) {
+  public UsuarioDto cadastrar(UsuarioInputDto dto) {
     Usuario usuario = modelMapper.map(dto, Usuario.class);
 
     Perfil perfil = perfilRepository.getById(dto.getPerfilId());

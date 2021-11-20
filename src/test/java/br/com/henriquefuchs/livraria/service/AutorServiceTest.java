@@ -1,7 +1,7 @@
 package br.com.henriquefuchs.livraria.service;
 
 import br.com.henriquefuchs.livraria.dto.AutorDto;
-import br.com.henriquefuchs.livraria.dto.AutorFormDto;
+import br.com.henriquefuchs.livraria.dto.AutorInputDto;
 import br.com.henriquefuchs.livraria.model.Autor;
 import br.com.henriquefuchs.livraria.repository.AutorRepository;
 import org.junit.jupiter.api.Test;
@@ -29,23 +29,23 @@ public class AutorServiceTest {
 
   @Test
   void deveriaCadastrarUmAutor() {
-    AutorFormDto autorFormDto = new AutorFormDto("Autor", "autor@email.com", LocalDate.now(), "Escrevo livros");
+    AutorInputDto autorInputDto = new AutorInputDto("Autor", "autor@email.com", LocalDate.now(), "Escrevo livros");
 
-    Autor autor = new Autor(autorFormDto.getNome(), autorFormDto.getEmail(), autorFormDto.getDataDeNascimento(), autorFormDto.getMiniCurriculo());
+    Autor autor = new Autor(autorInputDto.getNome(), autorInputDto.getEmail(), autorInputDto.getDataDeNascimento(), autorInputDto.getMiniCurriculo());
 
-    Mockito.when(modelMapper.map(autorFormDto, Autor.class)).thenReturn(autor);
+    Mockito.when(modelMapper.map(autorInputDto, Autor.class)).thenReturn(autor);
 
     Mockito.when(modelMapper.map(autor, AutorDto.class))
       .thenReturn(new AutorDto(autor.getNome(), autor.getEmail(), autor.getDataDeNascimento(), autor.getMiniCurriculo()));
 
-    AutorDto autorDto = autorService.cadastrar(autorFormDto);
+    AutorDto autorDto = autorService.cadastrar(autorInputDto);
 
     Mockito.verify(autorRepository).save(Mockito.any());
 
-    assertEquals(autorFormDto.getNome(), autorDto.getNome());
-    assertEquals(autorFormDto.getEmail(), autorDto.getEmail());
-    assertEquals(autorFormDto.getDataDeNascimento(), autorDto.getDataDeNascimento());
-    assertEquals(autorFormDto.getMiniCurriculo(), autorDto.getMiniCurriculo());
+    assertEquals(autorInputDto.getNome(), autorDto.getNome());
+    assertEquals(autorInputDto.getEmail(), autorDto.getEmail());
+    assertEquals(autorInputDto.getDataDeNascimento(), autorDto.getDataDeNascimento());
+    assertEquals(autorInputDto.getMiniCurriculo(), autorDto.getMiniCurriculo());
   }
 
 }

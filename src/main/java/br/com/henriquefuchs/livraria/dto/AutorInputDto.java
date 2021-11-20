@@ -7,32 +7,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LivroFormDto {
+public class AutorInputDto {
 
   @NotBlank
-  @Size(min = 10)
-  private String titulo;
+  private String nome;
 
-  @JsonAlias("data-de-lancamento")
+  @NotBlank
+  private String email;
+
+  @JsonAlias("data-de-nascimento")
   @JsonFormat(pattern = "dd/MM/yyyy")
   @PastOrPresent
   @NotNull
-  private LocalDate dataDeLancamento;
+  private LocalDate dataDeNascimento;
 
-  @JsonAlias("numero-de-paginas")
-  @Min(100)
-  @NotNull
-  private Integer numeroDePaginas;
-
-  @JsonAlias("autor-id")
-  @NotNull
-  private Long autorId;
+  @JsonAlias("mini-curriculo")
+  @NotBlank
+  private String miniCurriculo;
 
 }

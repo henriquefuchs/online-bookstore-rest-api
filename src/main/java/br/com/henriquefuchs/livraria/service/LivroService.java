@@ -1,9 +1,9 @@
 package br.com.henriquefuchs.livraria.service;
 
-import br.com.henriquefuchs.livraria.dto.AtualizacaoLivroFormDto;
+import br.com.henriquefuchs.livraria.dto.AtualizacaoLivroInputDto;
 import br.com.henriquefuchs.livraria.dto.LivroDetalhadoDto;
 import br.com.henriquefuchs.livraria.dto.LivroDto;
-import br.com.henriquefuchs.livraria.dto.LivroFormDto;
+import br.com.henriquefuchs.livraria.dto.LivroInputDto;
 import br.com.henriquefuchs.livraria.model.Autor;
 import br.com.henriquefuchs.livraria.model.Livro;
 import br.com.henriquefuchs.livraria.repository.AutorRepository;
@@ -38,13 +38,13 @@ public class LivroService {
   }
 
   @Transactional
-  public LivroDto cadastrar(LivroFormDto livroFormDto) {
-    Long autorId = livroFormDto.getAutorId();
+  public LivroDto cadastrar(LivroInputDto livroInputDto) {
+    Long autorId = livroInputDto.getAutorId();
 
     try {
       autorRepository.getById(autorId);
 
-      Livro livro = modelMapper.map(livroFormDto, Livro.class);
+      Livro livro = modelMapper.map(livroInputDto, Livro.class);
       livro.setId(null);
 
       livroRepository.save(livro);
@@ -56,7 +56,7 @@ public class LivroService {
   }
 
   @Transactional
-  public LivroDto atualizar(AtualizacaoLivroFormDto dto) {
+  public LivroDto atualizar(AtualizacaoLivroInputDto dto) {
     try {
       Autor autor = autorRepository.findById(dto.getAutorId()).orElseThrow(EntityNotFoundException::new);
       Livro livro = livroRepository.findById(dto.getId()).orElseThrow(EntityNotFoundException::new);

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UsuarioFormDto {
+public class UsuarioInputDto {
 
   @NotBlank
   private String nome;

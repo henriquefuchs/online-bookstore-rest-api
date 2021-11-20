@@ -1,7 +1,7 @@
 package br.com.henriquefuchs.livraria.controller;
 
 import br.com.henriquefuchs.livraria.dto.UsuarioDto;
-import br.com.henriquefuchs.livraria.dto.UsuarioFormDto;
+import br.com.henriquefuchs.livraria.dto.UsuarioInputDto;
 import br.com.henriquefuchs.livraria.service.UsuarioService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
@@ -32,7 +32,7 @@ public class UsuarioController {
 
   @PostMapping
   @ApiOperation("Cadastrar usuários")
-  public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioFormDto dto, UriComponentsBuilder uriComponentsBuilder) {
+  public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioInputDto dto, UriComponentsBuilder uriComponentsBuilder) {
     UsuarioDto usuarioDto = usuarioService.cadastrar(dto);
     URI uri = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuarioDto.getId()).toUri();
 

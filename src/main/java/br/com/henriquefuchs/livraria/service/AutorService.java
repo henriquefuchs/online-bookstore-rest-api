@@ -1,9 +1,9 @@
 package br.com.henriquefuchs.livraria.service;
 
-import br.com.henriquefuchs.livraria.dto.AtualizacaoAutorFormDto;
+import br.com.henriquefuchs.livraria.dto.AtualizacaoAutorInputDto;
 import br.com.henriquefuchs.livraria.dto.AutorDetalhadoDto;
 import br.com.henriquefuchs.livraria.dto.AutorDto;
-import br.com.henriquefuchs.livraria.dto.AutorFormDto;
+import br.com.henriquefuchs.livraria.dto.AutorInputDto;
 import br.com.henriquefuchs.livraria.model.Autor;
 import br.com.henriquefuchs.livraria.repository.AutorRepository;
 import org.modelmapper.ModelMapper;
@@ -34,14 +34,14 @@ public class AutorService {
   }
 
   @Transactional
-  public AutorDto cadastrar(AutorFormDto autorFormDto) {
-    Autor autor = modelMapper.map(autorFormDto, Autor.class);
+  public AutorDto cadastrar(AutorInputDto autorInputDto) {
+    Autor autor = modelMapper.map(autorInputDto, Autor.class);
     autorRepository.save(autor);
     return modelMapper.map(autor, AutorDto.class);
   }
 
   @Transactional
-  public AutorDto atualizar(AtualizacaoAutorFormDto dto) {
+  public AutorDto atualizar(AtualizacaoAutorInputDto dto) {
     try {
       Autor autor = autorRepository.getById(dto.getId());
       autor.atualizarInformacoes(dto.getNome(), dto.getEmail(), dto.getDataDeNascimento(), dto.getMiniCurriculo());

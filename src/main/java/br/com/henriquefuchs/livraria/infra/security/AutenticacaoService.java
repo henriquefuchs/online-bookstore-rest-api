@@ -1,6 +1,6 @@
 package br.com.henriquefuchs.livraria.infra.security;
 
-import br.com.henriquefuchs.livraria.dto.LoginFormDto;
+import br.com.henriquefuchs.livraria.dto.LoginInputDto;
 import br.com.henriquefuchs.livraria.dto.TokenDto;
 import br.com.henriquefuchs.livraria.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class AutenticacaoService implements UserDetailsService {
     return usuarioRepository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException(""));
   }
 
-  public TokenDto autenticar(LoginFormDto dto) {
+  public TokenDto autenticar(LoginInputDto dto) {
     Authentication authentication = new UsernamePasswordAuthenticationToken(dto.getLogin(), dto.getSenha());
     authentication = authenticationManager.authenticate(authentication);
 

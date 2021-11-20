@@ -1,9 +1,9 @@
 package br.com.henriquefuchs.livraria.controller;
 
-import br.com.henriquefuchs.livraria.dto.AtualizacaoLivroFormDto;
+import br.com.henriquefuchs.livraria.dto.AtualizacaoLivroInputDto;
 import br.com.henriquefuchs.livraria.dto.LivroDetalhadoDto;
 import br.com.henriquefuchs.livraria.dto.LivroDto;
-import br.com.henriquefuchs.livraria.dto.LivroFormDto;
+import br.com.henriquefuchs.livraria.dto.LivroInputDto;
 import br.com.henriquefuchs.livraria.service.LivroService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +36,16 @@ public class LivroController {
 
   @PostMapping
   @ApiOperation("Cadastrar livro")
-  public ResponseEntity<LivroDto> cadastrar(@RequestBody @Valid LivroFormDto livroFormDto, UriComponentsBuilder uriComponentsBuilder) {
-    LivroDto livroDto = livroService.cadastrar(livroFormDto);
+  public ResponseEntity<LivroDto> cadastrar(@RequestBody @Valid LivroInputDto livroInputDto, UriComponentsBuilder uriComponentsBuilder) {
+    LivroDto livroDto = livroService.cadastrar(livroInputDto);
     URI uri = uriComponentsBuilder.path("/livros/{id}").buildAndExpand(livroDto.getId()).toUri();
     return ResponseEntity.created(uri).body(livroDto);
   }
 
   @PutMapping
   @ApiOperation("Atualizar livro")
-  public ResponseEntity<LivroDto> atualizar(@RequestBody @Valid AtualizacaoLivroFormDto atualizacaoLivroFormDto) {
-    LivroDto livroDto = livroService.atualizar(atualizacaoLivroFormDto);
+  public ResponseEntity<LivroDto> atualizar(@RequestBody @Valid AtualizacaoLivroInputDto atualizacaoLivroInputDto) {
+    LivroDto livroDto = livroService.atualizar(atualizacaoLivroInputDto);
     return ResponseEntity.ok(livroDto);
   }
 

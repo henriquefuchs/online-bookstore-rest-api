@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AtualizacaoAutorFormDto extends AutorFormDto {
+public class AtualizacaoAutorInputDto extends AutorInputDto {
 
   public Long id;
 

@@ -52,5 +52,5 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bookstore-rest-api-henrique"
-          heroku_email: "henriquefuchsxxx@gmail.com"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true

@@ -1,6 +1,7 @@
 package br.com.henriquefuchs.livraria.infra.security;
 
 import br.com.henriquefuchs.livraria.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,11 +20,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
   private final TokenService tokenService;
   private final UsuarioRepository usuarioRepository;
-  private final AutenticacaoService autenticacaoService;
   private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-  public SecurityConfigurations(AutenticacaoService autenticacaoService, BCryptPasswordEncoder bCryptPasswordEncoder, TokenService tokenService, UsuarioRepository usuarioRepository) {
-    this.autenticacaoService = autenticacaoService;
+  @Autowired
+  private AutenticacaoService autenticacaoService;
+
+  public SecurityConfigurations(BCryptPasswordEncoder bCryptPasswordEncoder, TokenService tokenService, UsuarioRepository usuarioRepository) {
     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     this.tokenService = tokenService;
     this.usuarioRepository = usuarioRepository;
